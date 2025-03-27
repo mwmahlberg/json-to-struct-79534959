@@ -1,0 +1,28 @@
+{
+"data": [
+    {
+      "id": "stock1",
+      "some_key": "1",
+      "quotes": [{
+          "currency": "USD",
+          "price": 100
+      },
+      {
+          "currency": "EUR",
+          "price": 92
+      }]
+    },
+    {
+      "id": "stock14",
+      "some_key": "14",
+      "quotes": [{
+          "currency": "USD",
+          "price": 87
+      },
+      {
+          "currency": "EUR",
+          "price": 75
+      }]
+    }
+  ]
+}
