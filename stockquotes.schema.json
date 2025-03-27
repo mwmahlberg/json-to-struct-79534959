@@ -1,92 +1,111 @@
 {
-"$schema": "https://json-schema.org/draft/2020-12/schema",
-"$id": "https://example.com/stockquotes.schema.json",
-"title": "Stock Quotes",
-"description": "Quotes for stocks",
-"type": "object",
-"examples": [
-    {
-        "data": [
-            {
-                "id": "stock1",
-                "some_key": "1",
-                "quote": [{
-                    "currency": "USD",
-                    "price": 87
-                }]
-            },
-            {
-                "id": "stock14",
-                "some_key": "14",
-                "quote": [{
-                    "currency": "USD",
-                    "price": 87
-                }]
-            }
-        ]
-    }
-],
-"$defs": {
-    "quote": {
-        "type": "object",
-        "description": "A quote for a stock in a specific currency",
-        "title": "Quote",   
-        "examples": [
-            {
-                "currency": "USD",
-                "price": 87
-            }
-        ],
-        "properties": {
-            "currency": {
-                "type": "string"
-            },
-            "price": {
-                "type": ["number", "null"]
-            }
-        },
-        "required": ["currency", "price"]
-    }
-},
-"properties": {
-    "data": {
-        "type": "array",
-        "items": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier for the stock",
-                    "examples": ["stock1", "stock14"]
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/stockquotes.schema.json",
+    "title": "Stock Quotes",
+    "description": "Quotes for stocks",
+    "type": "object",
+    "examples": [
+        {
+            "data": [
+                {
+                    "id": "stock1",
+                    "some_key": "1",
+                    "quotes": [
+                        {
+                            "currency": "USD",
+                            "price": 87
+                        }
+                    ]
                 },
-                "some_key": {
+                {
+                    "id": "stock14",
+                    "some_key": "14",
+                    "quotes": [
+                        {
+                            "currency": "USD",
+                            "price": 87
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$defs": {
+        "quote": {
+            "type": "object",
+            "description": "A quote for a stock in a specific currency",
+            "title": "Quote",
+            "examples": [
+                {
+                    "currency": "USD",
+                    "price": 87
+                }
+            ],
+            "properties": {
+                "currency": {
                     "type": "string"
                 },
-                "quotes": {
-                    "type": "array",
-                    "description": "List of quotes for the stock in different currencies",
-                    "title": "Quotes",
-                    "examples": [
-                        [
-                            {
-                                "currency": "USD",
-                                "price": 87
-                            },
-                            {
-                                "currency": "EUR",
-                                "price": 75
-                            }
-                        ]
-                    ],
-                    "items": {
-                        "$ref": "#/$defs/quote"
-                    },
-                    "minItems": 1
+                "price": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             },
-            "required": ["id", "some_key", "quotes"]
+            "required": [
+                "currency",
+                "price"
+            ]
         }
-    }
-},
-"required": ["data"]
+    },
+    "properties": {
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the stock",
+                        "examples": [
+                            "stock1",
+                            "stock14"
+                        ]
+                    },
+                    "some_key": {
+                        "type": "string"
+                    },
+                    "quotes": {
+                        "type": "array",
+                        "description": "List of quotes for the stock in different currencies",
+                        "title": "Quotes",
+                        "examples": [
+                            [
+                                {
+                                    "currency": "USD",
+                                    "price": 87
+                                },
+                                {
+                                    "currency": "EUR",
+                                    "price": 75
+                                }
+                            ]
+                        ],
+                        "items": {
+                            "$ref": "#/$defs/quote"
+                        },
+                        "minItems": 1
+                    }
+                },
+                "required": [
+                    "id",
+                    "some_key",
+                    "quotes"
+                ]
+            }
+        }
+    },
+    "required": [
+        "data"
+    ]
 }
